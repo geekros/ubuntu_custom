@@ -19,6 +19,11 @@ UBUNTU_ROOTFS_PATH="/mnt/ubuntu-rootfs"
 
 function start_custom() {
 
+    if [ ! -f ${UBUNTU_IMAGE_PATH} ]; then
+        echo "ERROR: Image file not found"
+        exit 1
+    fi
+
     rm -rf ${UBUNTU_ROOT_PATH} ${UBUNTU_ROOTFS_PATH}
     mkdir ${UBUNTU_ROOT_PATH} ${UBUNTU_ROOTFS_PATH}
 
