@@ -31,7 +31,7 @@ function start_custom() {
     # shellcheck disable=SC2004
     LOOP_DEV1=$(losetup --find --show --offset $(($OFFSET1 * 512)) ${UBUNTU_IMAGE_PATH})
 
-    OFFSET2=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${DEBIAN_IMAGE_PATH}2" | awk '{print $2}')
+    OFFSET2=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}2" | awk '{print $2}')
     # shellcheck disable=SC2004
     LOOP_DEV2=$(losetup --find --show --offset $(($OFFSET2 * 512)) ${UBUNTU_IMAGE_PATH})
 
