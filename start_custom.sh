@@ -35,7 +35,8 @@ function start_custom() {
     # shellcheck disable=SC2004
     LOOP_DEV2=$(losetup --find --show --offset $(($OFFSET2 * 512)) ${UBUNTU_IMAGE_PATH})
 
-    echo OFFSET1 OFFSET2
+    echo "OFFSET1: $OFFSET1"
+    echo "OFFSET2: $OFFSET2"
 
     exit 0
 
