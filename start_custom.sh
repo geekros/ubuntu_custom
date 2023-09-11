@@ -27,23 +27,24 @@ function start_custom() {
     rm -rf ${UBUNTU_ROOT_PATH} ${UBUNTU_ROOTFS_PATH}
     mkdir ${UBUNTU_ROOT_PATH} ${UBUNTU_ROOTFS_PATH}
 
+    # shellcheck disable=SC2005
     echo "$(fdisk -l ${UBUNTU_IMAGE_PATH})"
 
-    OFFSET1=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}1" | tr -s ' ' | cut -d' ' -f2)
+    OFFSET1=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | grep "${UBUNTU_IMAGE_PATH}1" | tr -s ' ' | cut -d' ' -f2)
     if [[ ! $OFFSET1 =~ ^[0-9]+$ ]]; then
         echo "Error: OFFSET1 is not a valid number."
         exit 1
     fi
     # shellcheck disable=SC2004
-    LOOP_DEV1=$(losetup --find --show --offset $(($OFFSET1 * 512)) ${UBUNTU_IMAGE_PATH})
+    LOOP_DEV1=$(losetup --find --show --offset $(($OFFSET1 * 512)) "${UBUNTU_IMAGE_PATH}")
 
-    OFFSET2=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}2 " | tr -s ' ' | cut -d' ' -f2)
+    OFFSET2=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | grep "${UBUNTU_IMAGE_PATH}2 " | tr -s ' ' | cut -d' ' -f2)
     if [[ ! $OFFSET2 =~ ^[0-9]+$ ]]; then
         echo "Error: OFFSET2 is not a valid number."
         exit 1
     fi
     # shellcheck disable=SC2004
-    LOOP_DEV2=$(losetup --find --show --offset $(($OFFSET2 * 512)) ${UBUNTU_IMAGE_PATH})
+    LOOP_DEV2=$(losetup --find --show --offset $(($OFFSET2 * 512)) "${UBUNTU_IMAGE_PATH}")
 
     echo "OFFSET1: $OFFSET1"
     echo "OFFSET2: $OFFSET2"
