@@ -29,11 +29,11 @@ function start_custom() {
 
     echo "$(fdisk -l ${UBUNTU_IMAGE_PATH})"
 
-    OFFSET1=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}1" | awk '{print $2}')
+    OFFSET1=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}1" | tr -s ' ' | cut -d' ' -f2)
     # shellcheck disable=SC2004
     LOOP_DEV1=$(losetup --find --show --offset $(($OFFSET1 * 512)) ${UBUNTU_IMAGE_PATH})
 
-    OFFSET2=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}2" | awk '{print $2}')
+    OFFSET2=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}2" | tr -s ' ' | cut -d' ' -f2)
     # shellcheck disable=SC2004
     LOOP_DEV2=$(losetup --find --show --offset $(($OFFSET2 * 512)) ${UBUNTU_IMAGE_PATH})
 
