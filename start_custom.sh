@@ -30,7 +30,7 @@ function start_custom() {
     # shellcheck disable=SC2005
     echo "$(fdisk -l ${UBUNTU_IMAGE_PATH})"
 
-    OFFSET1=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | awk -v path="${UBUNTU_IMAGE_PATH}1" '$1 == path {print $3}')
+    OFFSET1=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | awk -v path="${UBUNTU_IMAGE_PATH}1" '$1 == path {print $2}')
     if [[ ! $OFFSET1 =~ ^[0-9]+$ ]]; then
         echo "Error: OFFSET1 is not a valid number."
         exit 1
