@@ -10,6 +10,7 @@ function init_service() {
     local LOCAL_ROOTFS=$2
 
 if [ -f "${LOCAL_ROOTFS}"/etc/init.d/robotchain-host ];then
+    touch "${LOCAL_ROOTFS}"/etc/init.d/robotchain-host
     cat <<-EOF > "${LOCAL_ROOTFS}"/etc/init.d/robotchain-host
 #!/bin/bash
 
