@@ -30,7 +30,7 @@ function start_custom() {
     # shellcheck disable=SC2005
     echo "$(fdisk -l ${UBUNTU_IMAGE_PATH})"
 
-    OFFSET1=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | sed -n -e "/${UBUNTU_IMAGE_PATH}1 /s/.* \([0-9]\+\) .*/\1/p")
+    OFFSET1=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | awk -v path="${UBUNTU_IMAGE_PATH}1" '$1 == path {print $4}')
     if [[ ! $OFFSET1 =~ ^[0-9]+$ ]]; then
         echo "Error: OFFSET1 is not a valid number."
         exit 1
@@ -38,7 +38,7 @@ function start_custom() {
     # shellcheck disable=SC2004
     LOOP_DEV1=$(losetup --find --show --offset $(($OFFSET1 * 512)) "${UBUNTU_IMAGE_PATH}")
 
-    OFFSET2=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | sed -n -e "/${UBUNTU_IMAGE_PATH}2 /s/.* \([0-9]\+\) .*/\1/p")
+    OFFSET2=$(fdisk -l "${UBUNTU_IMAGE_PATH}" | awk -v path="${UBUNTU_IMAGE_PATH}2" '$1 == path {print $4}')
     if [[ ! $OFFSET2 =~ ^[0-9]+$ ]]; then
         echo "Error: OFFSET2 is not a valid number."
         exit 1
