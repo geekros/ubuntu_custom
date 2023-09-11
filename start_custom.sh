@@ -20,7 +20,7 @@ UBUNTU_ROOTFS_PATH="/mnt/ubuntu-rootfs"
 function start_custom() {
 
     if [ ! -f ${UBUNTU_IMAGE_PATH} ]; then
-        echo "ERROR: Image file not found"
+        echo "ERROR: custom_ubuntu.img file not found"
         exit 1
     fi
 
