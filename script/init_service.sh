@@ -29,9 +29,9 @@ exit 0
 EOF
 fi
 
-eval 'LC_ALL=C LANG=C chroot $ROOTFS_DIR /bin/bash -c "chmod +x /etc/init.d/robotchain-host"'
-eval 'LC_ALL=C LANG=C chroot $ROOTFS_DIR /bin/bash -c "update-rc.d robotchain-host defaults"'
-eval 'LC_ALL=C LANG=C chroot $ROOTFS_DIR /bin/bash -c "systemctl enable robotchain-host"'
+eval 'LC_ALL=C LANG=C chroot $LOCAL_ROOTFS /bin/bash -c "chmod +x /etc/init.d/robotchain-host"'
+eval 'LC_ALL=C LANG=C chroot $LOCAL_ROOTFS /bin/bash -c "update-rc.d robotchain-host defaults"'
+eval 'LC_ALL=C LANG=C chroot $LOCAL_ROOTFS /bin/bash -c "systemctl enable robotchain-host"'
 
 echo "Init Service Done!"
 }
