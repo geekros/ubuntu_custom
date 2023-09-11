@@ -28,7 +28,6 @@ if [ ! -f "${LOCAL_ROOTFS}"/etc/init.d/robotchain-host ];then
 
 echo "host" > /sys/devices/platform/soc/b2000000.usb/b2000000.dwc3/role
 
-exit 0
 EOF
 fi
 
