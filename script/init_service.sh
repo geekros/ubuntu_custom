@@ -26,7 +26,7 @@ if [ ! -f "${LOCAL_ROOTFS}"/etc/init.d/robotchain-host ];then
 # Description:       Enable service provided by your_service_name
 ### END INIT INFO
 
-echo "host" > /sys/devices/platform/soc/b2000000.usb/b2000000.dwc3/role
+echo host > /sys/devices/platform/soc/b2000000.usb/b2000000.dwc3/role
 
 EOF
 fi
