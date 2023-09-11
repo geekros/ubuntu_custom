@@ -49,8 +49,6 @@ function start_custom() {
     echo "OFFSET1: $OFFSET1"
     echo "OFFSET2: $OFFSET2"
 
-    exit 0
-
     mount "$LOOP_DEV1" ${UBUNTU_ROOT_PATH}
     mount "$LOOP_DEV2" ${UBUNTU_ROOTFS_PATH}
 
