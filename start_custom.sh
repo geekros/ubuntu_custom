@@ -27,6 +27,8 @@ function start_custom() {
     rm -rf ${UBUNTU_ROOT_PATH} ${UBUNTU_ROOTFS_PATH}
     mkdir ${UBUNTU_ROOT_PATH} ${UBUNTU_ROOTFS_PATH}
 
+    echo "$(fdisk -l ${UBUNTU_IMAGE_PATH})"
+
     OFFSET1=$(fdisk -l ${UBUNTU_IMAGE_PATH} | grep "${UBUNTU_IMAGE_PATH}1" | awk '{print $2}')
     # shellcheck disable=SC2004
     LOOP_DEV1=$(losetup --find --show --offset $(($OFFSET1 * 512)) ${UBUNTU_IMAGE_PATH})
