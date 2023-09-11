@@ -13,7 +13,7 @@ fi
 apt update
 apt install -y vim curl wget qemu-user-static qemu-system-arm debootstrap binfmt-support
 
-UBUNTU_IMAGE_PATH="custom_ubuntu.img"
+UBUNTU_IMAGE_PATH="custom_image.img"
 UBUNTU_ROOT_PATH="/mnt/ubuntu-boot"
 UBUNTU_ROOTFS_PATH="/mnt/ubuntu-rootfs"
 
